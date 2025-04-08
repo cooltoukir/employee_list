@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
           title: const Text("Home Screen"),
         ),
         body: Obx(() => ListView.builder(
+            controller: controller.scrollController,
             itemCount: controller.employeeList.length,
             itemBuilder: (context, index) {
               return ListTile(

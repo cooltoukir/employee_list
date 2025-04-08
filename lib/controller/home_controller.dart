@@ -10,6 +10,15 @@ class HomeController extends GetxController {
 
   RxList<EmployeeModel> employeeList = <EmployeeModel>[].obs;
 
+  ScrollController scrollController = ScrollController();
+
+  void _scrollListener() {
+    if (scrollController.position.pixels ==
+        scrollController.position.maxScrollExtent) {
+      getEmployeeList();
+    }
+  }
+
   getEmployeeList() async {
     dio.interceptors.add(PrettyDioLogger(
         requestHeader: true,
@@ -35,8 +44,8 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
+    scrollController.addListener(_scrollListener);
     getEmployeeList();
   }
 }
