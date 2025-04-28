@@ -17,10 +17,15 @@ class HomeScreen extends StatelessWidget {
             controller: controller.scrollController,
             itemCount: controller.employeeList.length,
             itemBuilder: (context, index) {
+              final employee = controller.employeeList[index];
               return ListTile(
-                title: Text(controller.employeeList[index].name ?? "No name"),
-                subtitle:
-                    Text(controller.employeeList[index].email ?? "No email"),
+                leading: CircleAvatar(
+                  radius: 25,
+                  backgroundImage: NetworkImage(employee.avatar ?? ''),
+                  backgroundColor: Colors.grey[200],
+                ),
+                title: Text(employee.name ?? "No name"),
+                subtitle: Text(employee.email ?? "No email"),
               );
             })));
   }

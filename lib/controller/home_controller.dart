@@ -29,7 +29,7 @@ class HomeController extends GetxController {
         compact: true));
     try {
       dio_obj.Response response =
-          await dio.get("https://www.freetestapi.com/api/v1/users");
+          await dio.get("https://api.escuelajs.co/api/v1/users");
 
       if (response.statusCode == 200) {
         employeeList.addAll(List<EmployeeModel>.from(
